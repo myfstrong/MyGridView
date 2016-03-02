@@ -31,7 +31,9 @@ public class MyBaseAdapter extends BaseAdapter{
 
     @Override
     public int getCount() {
-        return 11;
+        if(list == null || list.size() <= 0)
+            return 0;
+        return list.size();
     }
 
     @Override
@@ -41,7 +43,7 @@ public class MyBaseAdapter extends BaseAdapter{
 
     @Override
     public long getItemId(int position) {
-        return 11;
+        return list.size();
     }
 
     @Override
@@ -52,12 +54,13 @@ public class MyBaseAdapter extends BaseAdapter{
         ViewGroup viewGroup = (ViewGroup)layoutInflater.inflate(R.layout.layout_gridview, null);
 
         ImageView imageView = (ImageView)viewGroup.findViewById(R.id.imageView);
-        imageView.setImageResource(list.get(position).getImageView());
+        imageView.setImageResource(list.get(position).getmImg_id());
 
         TextView mTxt_Name = (TextView)viewGroup.findViewById(R.id.txt_Name);
-        mTxt_Name.setText("苹果iPhone6");
+        mTxt_Name.setText(list.get(position).getmTxt_Name());
+
         TextView mTxt_Price = (TextView)viewGroup.findViewById(R.id.txt_Price);
-        mTxt_Price.setText("5599元");
+        mTxt_Price.setText(list.get(position).getmTxt_Price() + "");
 
         return viewGroup;
     }

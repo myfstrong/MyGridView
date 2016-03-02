@@ -6,6 +6,7 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 
 import com.myfstrong.mygridview.adapter.MyBaseAdapter;
+import com.myfstrong.mygridview.data.DataCenter;
 import com.myfstrong.mygridview.data.Merchandise;
 
 import java.util.ArrayList;
@@ -24,10 +25,10 @@ public class MainActivity extends AppCompatActivity {
         gridView = (GridView)findViewById(R.id.gridView);
 
         //获取数据
-        List<Merchandise> list = new ArrayList<Merchandise>();
+        List<Merchandise> list = DataCenter.getData();
 
         //构造适配器
-        BaseAdapter baseAdapter = new MyBaseAdapter(this，list);
+        BaseAdapter baseAdapter = new MyBaseAdapter(this,list);
 
         gridView.setAdapter(baseAdapter);
     }
